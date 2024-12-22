@@ -15,5 +15,8 @@
   "bugs": {
     "url": ""
   },
-  "homepage": ""
+  "homepage": "",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
