@@ -5,6 +5,7 @@ The best store
 
 1.  
   A. npm i sequelize -S
+
   B. sequelize-cli --save-dev
 
 
