@@ -6,7 +6,7 @@ The best store
 1.  
   A. npm i sequelize -S
 
-  B. sequelize-cli --save-dev
+  B. npm i sequelize-cli --save-dev
 
 
 # Initialize sequelize in the project
