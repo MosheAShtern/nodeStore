@@ -1,5 +1,7 @@
 'use strict';
 
+const data = require('../data/products.json');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -9,16 +11,9 @@ module.exports = {
      * Example:
     
     */
-    await queryInterface.bulkInsert('products', [{
-       name: 'PC',
-       description: 'just a pc',
-       amount: 40
-    },
-    {
-      name: 'laptop',
-      description: 'just a laptop',
-      amount: 100
-   }], {});
+    const createdAt = new Date();
+    const updatedAt = new Date();
+    await queryInterface.bulkInsert('products', data.map(product => ({createdAt, updatedAt, ...product})), {});
   },
 
   async down (queryInterface, Sequelize) {
