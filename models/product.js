@@ -1,5 +1,5 @@
 const {DataTypes} = require('sequelize');
-const sequelize = require('../utils/database');
+const {sequelize} = require('../utils/database');
 
 const Product = sequelize.define('Product', {
   id: {
@@ -11,30 +11,37 @@ const Product = sequelize.define('Product', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    field: 'product_name'
+    field: 'name'
   },
   price: {
     type: DataTypes.INTEGER,
-    field: 'product_price',
+    field: 'price',
     allowNull: false
   },
   description: {
     type: DataTypes.TEXT,
     defaultValue: '',
     allowNull: false,
-    field: 'product_desc'
+    field: 'description'
   },
   quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'product_quantity'
   },
   discount: {
     type: DataTypes.INTEGER,
     field: 'product_discount',
     allowNull: true,
     defaultValue: 0
+  },
+  isDeleted:{
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: 0,
+    field: 'is_deleted'
   }
+},{
+  tableName: 'products'
 });
 
 module.exports = Product;

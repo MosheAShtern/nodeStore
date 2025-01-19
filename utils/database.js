@@ -10,4 +10,17 @@ const sequelize = new Sequelize(credetials.database, credetials.username, credet
     dialect: credetials.dialect
 });
 
-module.exports = sequelize;
+
+const getModelAttributes = (model) =>{
+    const tableName = model.tableName; 
+    const attributes = {};
+    for (const [key, value] of Object.entries(model.rawAttributes)) {
+      attributes[key] = value;
+    }
+    return {tableName, attributes}
+}
+
+module.exports = {
+    sequelize,
+    getModelAttributes
+};

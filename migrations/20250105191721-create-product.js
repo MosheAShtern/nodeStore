@@ -2,19 +2,17 @@
 /** @type {import('sequelize-cli').Migration} */
 
 const ProductModel = require('../models/product');
+const {getModelAttributes} = require('../utils/database')
+
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    const tableName = ProductModel.tableName; 
-    const attributes = {};
-    for (const [key, value] of Object.entries(ProductModel.rawAttributes)) {
-      attributes[key] = value;
-    }
+  up(queryInterface, Sequelize) {
+    const {tableName, attributes} = getModelAttributes(ProductModel); 
     return queryInterface.createTable(tableName, attributes);
    
   },
   async down(queryInterface, Sequelize) {
-    const tableName = ProductModel.tableName; 
+    const {tableName} = getModelAttributes(ProductModel);
     await queryInterface.dropTable(tableName);
   }
 };
