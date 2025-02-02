@@ -1,5 +1,7 @@
 const {DataTypes} = require('sequelize');
 const {sequelize} = require('../utils/database');
+const productImages = require('./product_images');
+
 
 const Product = sequelize.define('Product', {
   id: {
@@ -41,7 +43,13 @@ const Product = sequelize.define('Product', {
     field: 'is_deleted'
   }
 },{
-  tableName: 'products'
+  tableName: 'products'  
 });
+
+Product.hasMany(ProductImages, {
+  foreignKey: 'productId',
+  as: 'images'
+})
+
 
 module.exports = Product;

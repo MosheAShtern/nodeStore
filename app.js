@@ -2,6 +2,8 @@ const express = require('express');
 const {sequelize} = require('./utils/database');
 const productRoutes = require('./routes/products');
 const path = require('path');
+const ProductImages = require('./models/product_images');
+const Product = require('./models/product');
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +14,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/products', productRoutes);
 
 app.get('/', (request, response) => {
+
   response.render('page', {title: 'Hello Hompage.'});
 });
 
