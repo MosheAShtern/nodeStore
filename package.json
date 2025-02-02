@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "init": "npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all",
     "start": "npx nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
