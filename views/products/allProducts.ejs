@@ -2,14 +2,24 @@
 
     <div class="container">
 
-        <div class="card" style="width: 18rem;">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <% for(var i=0; i < products.length; i++) {%>
+         <div>
+            <%= products[i].name%>
+            <%= products[i].price%>
+            <%= products[i].description%>
+
+          </div>
+     <% } %>
+     
+
+     <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <!-- <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">sdsdd </p>
               <a href="#" class="btn btn-primary">Buy</a>
             </div>
-          </div>
+          </div> -->
 
     </div>
 <%- include('../partials/footer'); %>
