@@ -1,4 +1,5 @@
 const Product = require('../models/product');
+const ProductImages = require('../models/product_images');
 
 const getAllProducts = async (request, response) => {
         try{
@@ -22,11 +23,17 @@ const getProduct = async (request, response) => {
     let error = '';
     if(!Number.isNaN(productId)){
         const product = await Product.findOne({
+            attributes: ['id', 'price', 'name', 'description', 'quantity'],
             where: {
                 id
             },
-            raw: true
+            include: [{
+                model: ProductImages,
+                required: false,
+                as: 'images'
+            }]
         })
+        console.log('product ', product);
         if(product){
             response.render('products/product', {product});
         }else{
